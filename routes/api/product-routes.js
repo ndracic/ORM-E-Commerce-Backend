@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
   try{
     const productsData = await Product.findAll({include: [{model: Tag}, {model: Category}]})
     if (!productsData) {
-      res.status(404).json({message: 'No categories'})
+      res.status(404).json({message: 'No products'})
 
       return
     }
@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) => {
       include: [{model: Tag},{model: Category}],
     });
     if (!productsData) {
-      res.status(404).json({message: "No product by this id found"})
+      res.status(404).json({message: "No product "})
       return
     }
     console.log(productsData)
@@ -124,7 +124,7 @@ router.delete('/:id', async (req, res) => {
     });
 
     if (!productsData) {
-      res.status(404).json({ message: 'No product found with that id!' });
+      res.status(404).json({ message: 'No product ' });
       return;
     }
 
